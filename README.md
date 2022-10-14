@@ -1,2 +1,2 @@
-# TP-Capteurs-et-r-seaux
+# TP-Capteurs-et-reseaux
 TP ESE de capteurs et réseaux
