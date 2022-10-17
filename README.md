@@ -30,4 +30,20 @@ Registres  contenant la pression (ainsi que le format): press_xlsb[7:0] est à l
 Fonctions permettant le calcul de la température et de la pression compensées, en format entier 32 bits: bmp280_compensate_T_double (BMP280_S32_t adc_T) pour la temperature et bmp280_compensate_P_double (BMP280_S32_p adc_P) pour la pression.</br>
 
 
+**2. TP 2:  Interfaçage STM32 - Raspberry**
+
+Comment le Raspberry a obtenu son adresse IP? Le reseau est : 192.168.88.0/24 ainsi le reseau peut posséder jusqu'a 2^8 machines. C'est le routeur qui attribut une adresse IP aux RPI
+
+
+etapes effectuées au cours du TP 2
+- On a flashé la carte à l'aide de RPI-imager
+- On s'est connecté au reseau 192.168.88.0/24 en ssh 
+- On a obtenu l'adresse IP : 192.168.88.242
+- On a modifié les fichiers config.txt et cmdline.txt tel que decrit dans le TP
+- On a installé minicom (sudo apt-get install minicom) 
+- En rebouclant le RX de la carte son son TX, on a reussi a envoyer et recevoir des chaînes de caractères
+- On a connecté de RX de la RPI au TX de la nucléo et inverssement pour pouvoir les faires communiqué lun avec l'autre
+
+
+
 
