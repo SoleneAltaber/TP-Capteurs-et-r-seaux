@@ -42,7 +42,37 @@ etapes effectuées au cours du TP 2
 - On a modifié les fichiers config.txt et cmdline.txt tel que decrit dans le TP
 - On a installé minicom (sudo apt-get install minicom) 
 - En rebouclant le RX de la carte son son TX, on a reussi a envoyer et recevoir des chaînes de caractères
-- On a connecté de RX de la RPI au TX de la nucléo et inverssement pour pouvoir les faires communiqué lun avec l'autre
+- On a connecté de RX de la RPI au TX de la nucléo et inverssement pour pouvoir les faires communiquer l'un avec l'autre
+
+**TP3 - Interface REST**
+
+On réutilise notre rasberry d'IP=192.168.88.242
+On installe pip3 de python3 ainsi que pyserial et flask
+On ecrit le fichier hello.py dans lequel on retrouve le code suivant :
+
+from flask import Flask   # on import Flask , un framework pour le développement web en Python
+app = Flask(__name__)     # on crée l'application
+welcome = "Welcome to 3ESE API!"
+
+@app.route('/')           # on défini l'URL (ici on est à la racine) à laquel la fonction va se lancer 
+def hello_world():        # on défini une fonction
+    return 'Hello, World!\n'    # contenu de la fonction, ici on print Hello world 
+
+@app.route('/api/welcome/') # on défini l'URL (ici on est à la racine/api/welcome) à laquel la fonction va se lancer 
+def api_welcome():
+    return welcome
+    
+@app.route('/api/welcome/<int:index>')  # ici le "fragement" <int:index> permet d'utiliser ce morceau d'URL (ici un nombre) comme variable dans la fonction
+def api_welcome_index(index):
+    return welcome[index]
+    
+Une fois le fichier créé, on "run" hello.py avec la commande :
+FLASK_APP=hello.py flask run           <- on compile le fichier et on le fait tourner sur notre LocalHost (http://127.0.0.1:5000)
+curl http://127.0.0.1:5000             <- il affiche l'entête de la page web d'adresse http://127.0.0.1:5000
+
+Pour pouvoir prétendre être RESTful, notre serveur devra: répondre sous forme JSON et différencier les méthodes HTTP.
+
+
 
 
 
